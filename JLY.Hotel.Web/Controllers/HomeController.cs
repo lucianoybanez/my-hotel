@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JLY.Hotel.Web.Infrastucture;
 
 namespace JLY.Hotel.Web.Controllers
 {

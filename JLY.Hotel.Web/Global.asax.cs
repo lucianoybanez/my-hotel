@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using JLY.Hotel.Web.Infrastucture;
 
 namespace JLY.Hotel.Web
 {
@@ -15,6 +16,7 @@ namespace JLY.Hotel.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute()); // It to say go to shared folder error page if ocurres on even action controller
+            filters.Add(new LogAttribute());
         }
 
         public static void RegisterRoutes(RouteCollection routes)
