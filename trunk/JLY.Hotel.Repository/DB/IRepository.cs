@@ -129,5 +129,9 @@ namespace JLY.Hotel.Repository.DB
         /// </summary>
         /// <value>The unit of work.</value>
         IUnitOfWork UnitOfWork { get; }
+
+
+
+        IEnumerable<TEntity> Find<TEntity>(Expression<Func<TEntity, bool>> criteria, params Expression<Func<TEntity, object>>[] includes)where TEntity : class;
     }
 }

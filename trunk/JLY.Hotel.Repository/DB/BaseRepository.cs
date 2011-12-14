@@ -11,7 +11,11 @@ using System.Text;
 
 namespace JLY.Hotel.Repository.DB
 {
-    public class BaseRepository : IRepository
+     using System.Collections;
+
+     using JLY.Hotel.Model.Entities;
+
+     public class BaseRepository : IRepository
     {
         private DbContext context;
 
@@ -44,6 +48,7 @@ namespace JLY.Hotel.Repository.DB
                 throw new ArgumentNullException("context");
             }
 
+            this.SetInitialaizerData();
             this.context = context;
         }
 
@@ -56,7 +61,6 @@ namespace JLY.Hotel.Repository.DB
         {
             return Context.Set<TEntity>().IncludeMultiple(includes).Single(criteria);
         }
-
 
         public TEntity First<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class
         {
@@ -156,5 +160,27 @@ namespace JLY.Hotel.Repository.DB
             }
             return 0;
         }
+
+
+        private void SetInitialaizerData()
+        {
+             System.Data.Entity.Database.SetInitializer(new HotelDBInitializer());
+        }
+
     }
+
+    public class HotelDBInitializer : DropCreateDatabaseIfModelChanges<HotelDB>
+    {
+         protected override void Seed(HotelDB context)
+         {
+              base.Seed(context);
+
+              context.Users.Add(new User() { Name = "Luciano", });
+              context.Users.Add(new User() { Name = "Juan Jose", });
+              context.Users.Add(new User() { Name = "Chango", });
+              context.SaveChanges();
+         }
+    }
+
+
 }
