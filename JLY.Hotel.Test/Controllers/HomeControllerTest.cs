@@ -6,22 +6,23 @@ using NUnit.Framework;
 
 namespace JLY.Hotel.Test.Controllers
 {
-    [TestFixture]
-    class HomeControllerTest
-    {
-        [SetUp]
-        public void Setup()
-        {
+     [TestFixture]
+     class HomeControllerTest
+     {
+          [SetUp]
+          public void Setup()
+          {
 
-        }
+          }
 
-        [Test]
-        public void Index_Test()
-        {
+          [Test]
+          public void Index_Test()
+          {
+               Assert.IsTrue(true);
 
-        }
+          }
 
 
 
-    }
+     }
 }
