@@ -11,6 +11,13 @@ namespace JLY.Hotel.Repository
 {
     public class UserRepository : BaseRepository, IUserRepository 
     {
+
+        public UserRepository()
+        {
+            
+        }
+
+
         public UserRepository(DbContext context) : base(context)
         {
 
