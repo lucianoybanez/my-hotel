@@ -1,5 +1,10 @@
 using StructureMap;
+using JLY.Hotel.ServiceView.Services;
+using JLY.Hotel.ServiceView.ServicesInterface;
+
 namespace JLY.Hotel.Web {
+    
+
     public static class IoC {
         public static IContainer Initialize() {
             ObjectFactory.Initialize(x =>
@@ -9,9 +14,14 @@ namespace JLY.Hotel.Web {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-            //                x.For<IExample>().Use<Example>();
+                            ServicesView(x);
                         });
             return ObjectFactory.Container;
+        }
+
+        private static void ServicesView(IInitializationExpression x)
+        {
+            x.For<IHomeService>().Use<HomeService>();
         }
     }
 }

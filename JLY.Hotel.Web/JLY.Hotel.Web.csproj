@@ -163,6 +163,16 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JLY.Hotel.Model\JLY.Hotel.Model.csproj">
+      <Project>{832F99AE-6C8E-494A-A655-34BDED1CA7A4}</Project>
+      <Name>JLY.Hotel.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JLY.Hotel.ServiceView\JLY.Hotel.ServiceView.csproj">
+      <Project>{47E9918B-2D2A-46E4-8767-6E8F00810CDF}</Project>
+      <Name>JLY.Hotel.ServiceView</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
