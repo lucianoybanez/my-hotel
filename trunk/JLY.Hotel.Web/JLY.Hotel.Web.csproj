@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -167,6 +170,10 @@
     <ProjectReference Include="..\JLY.Hotel.Model\JLY.Hotel.Model.csproj">
       <Project>{832F99AE-6C8E-494A-A655-34BDED1CA7A4}</Project>
       <Name>JLY.Hotel.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JLY.Hotel.Repository\JLY.Hotel.Repository.csproj">
+      <Project>{12BB64FB-A4AE-4F6C-AD05-8D8EB4278E48}</Project>
+      <Name>JLY.Hotel.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\JLY.Hotel.ServiceView\JLY.Hotel.ServiceView.csproj">
       <Project>{47E9918B-2D2A-46E4-8767-6E8F00810CDF}</Project>
