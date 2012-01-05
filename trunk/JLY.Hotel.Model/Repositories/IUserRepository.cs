@@ -10,5 +10,6 @@ namespace JLY.Hotel.Model.Repositories
     {
         IUser GetUserById(int id);
         IUser GetUserByName(string name);
+        IUser GetUserByNamePassword(string name, string password);
     }
 }

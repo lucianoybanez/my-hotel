@@ -27,7 +27,14 @@ namespace JLY.Hotel.Test.Repositories
         public void GetUserByIdTest()
         {
             IUser user = _UserRepository.GetUserById(4);
-            Assert.IsTrue(user==null);
+            Assert.IsTrue(user!=null);
+        }
+
+        [Test]
+        public void GetUserBynamepasas()
+        {
+            IUser user = _UserRepository.GetUserByNamePassword("admin", "a123456");
+            Assert.IsTrue(user != null);
         }
 
     }

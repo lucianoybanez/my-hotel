@@ -11,11 +11,11 @@ using System.Text;
 
 namespace JLY.Hotel.Repository.DB
 {
-     using System.Collections;
+    using System.Collections;
 
-     using JLY.Hotel.Model.Entities;
+    using JLY.Hotel.Model.Entities;
 
-     public class BaseRepository : IRepository
+    public class BaseRepository : IRepository
     {
         private DbContext context;
 
@@ -57,7 +57,17 @@ namespace JLY.Hotel.Repository.DB
             return Context.Set<TEntity>().Single(criteria);
         }
 
+        public TEntity SingleOrDefault<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
+        {
+            return Context.Set<TEntity>().SingleOrDefault(criteria);
+        }
+
         public TEntity Single<TEntity>(Expression<Func<TEntity, bool>> criteria, params Expression<Func<TEntity, object>>[] includes) where TEntity : class
+        {
+            return Context.Set<TEntity>().IncludeMultiple(includes).Single(criteria);
+        }
+
+        public TEntity SingleOrDefault<TEntity>(Expression<Func<TEntity, bool>> criteria, params Expression<Func<TEntity, object>>[] includes) where TEntity : class
         {
             return Context.Set<TEntity>().IncludeMultiple(includes).Single(criteria);
         }
@@ -164,22 +174,41 @@ namespace JLY.Hotel.Repository.DB
 
         private void SetInitialaizerData()
         {
-             System.Data.Entity.Database.SetInitializer(new HotelDBInitializer());
+            System.Data.Entity.Database.SetInitializer(new HotelDBInitializer());
         }
 
     }
 
     public class HotelDBInitializer : DropCreateDatabaseIfModelChanges<HotelDB>
     {
-         protected override void Seed(HotelDB context)
-         {
-              base.Seed(context);
+        protected override void Seed(HotelDB context)
+        {
+            base.Seed(context);
 
-              context.Users.Add(new User() { Name = "Luciano", });
-              context.Users.Add(new User() { Name = "Juan Jose", });
-              context.Users.Add(new User() { Name = "Chango", });
-              context.SaveChanges();
-         }
+            Rol adminrol = new Rol() { Descrition = "Administrador" };
+            Rol Nivel2 = new Rol() { Descrition = "Nivel2" };
+            Rol Nivel3 = new Rol() { Descrition = "Nivel1" };
+
+            context.Rols.Add(adminrol);
+            context.Rols.Add(Nivel2);
+            context.Rols.Add(Nivel3);
+
+            IList<Rol> listRol1 = new List<Rol>();
+            listRol1.Add(adminrol);
+            listRol1.Add(Nivel2);
+
+            IList<Rol> listRol2 = new List<Rol>();
+            listRol2.Add(adminrol);
+
+
+            context.Users.Add(new User() { Name = "admin", Password = "a123456", Rols = listRol1 });
+            context.Users.Add(new User() { Name = "Luciano", Password = "a123456", Rols = listRol2 });
+            context.Users.Add(new User() { Name = "Juan Jose", Password = "a123456" });
+            context.Users.Add(new User() { Name = "Chango", Password = "a123456" });
+
+
+            context.SaveChanges();
+        }
     }
 
 

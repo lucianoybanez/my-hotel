@@ -21,9 +21,27 @@ namespace JLY.Hotel.Repository.DB
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="criteria">The criteria.</param>
+        /// <returns></returns>
+        TEntity SingleOrDefault<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class;
+
+        /// <summary>
+        /// Gets one entity based on matching criteria
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="criteria">The criteria.</param>
         /// <param name="includes">Includes paths</param>
         /// <returns></returns>
         TEntity Single<TEntity>(Expression<Func<TEntity, bool>> criteria, params Expression<Func<TEntity, object>>[] includes)
+            where TEntity : class;
+
+        /// <summary>
+        /// Gets one entity based on matching criteria
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="criteria">The criteria.</param>
+        /// <param name="includes">Includes paths</param>
+        /// <returns></returns>
+        TEntity SingleOrDefault<TEntity>(Expression<Func<TEntity, bool>> criteria, params Expression<Func<TEntity, object>>[] includes)
             where TEntity : class;
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace JLY.Hotel.Web.Controllers
 {
     using JLY.Hotel.ServiceView.ServicesInterface;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private IHomeService homeService;
 

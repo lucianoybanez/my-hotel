@@ -26,5 +26,10 @@ namespace JLY.Hotel.Repository
         {
             return Single<User>(c => c.Name == name);
         }
+
+        public IUser GetUserByNamePassword(string name, string password)
+        {
+            return SingleOrDefault<User>(c => c.Name == name && c.Password == password);
+        }
     }
 }

@@ -5,15 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using JLY.Hotel.ServiceView.ServicesInterface;
 using JLY.Hotel.Web.Models;
 
 namespace JLY.Hotel.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
+
+        private IUserService userService;
 
         //
         // GET: /Account/LogOn
+
+        public AccountController(IUserService userService)
+        {
+            this.userService = userService;
+        }
 
         public ActionResult LogOn()
         {
@@ -28,6 +36,17 @@ namespace JLY.Hotel.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (userService.IsAccountValid(model.UserName,model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddError(userService.GetErrors());
+                }
+
+                /*
                 if (Membership.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
@@ -45,6 +64,7 @@ namespace JLY.Hotel.Web.Controllers
                 {
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
+                 * */
             }
 
             // If we got this far, something failed, redisplay form
