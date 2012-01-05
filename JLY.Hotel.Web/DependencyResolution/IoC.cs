@@ -33,6 +33,7 @@ namespace JLY.Hotel.Web {
         private static void ServicesView(IInitializationExpression x)
         {
             x.For<IHomeService>().Use<HomeService>();
+            x.For<IUserService>().Use<UserService>();
         }
     }
 }

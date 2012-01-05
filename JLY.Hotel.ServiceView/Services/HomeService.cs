@@ -13,7 +13,7 @@ namespace JLY.Hotel.ServiceView.Services
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class HomeService : IHomeService
+    public class HomeService : BaseService, IHomeService
     {
         private IUserRepository userRepository;
 
