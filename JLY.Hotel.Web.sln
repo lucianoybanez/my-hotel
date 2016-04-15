@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLY.Hotel.Web", "JLY.Hotel.Web\JLY.Hotel.Web.csproj", "{D51BD79A-A2E6-4CE8-BF97-F0C06D2BB974}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLY.Hotel.Model", "JLY.Hotel.Model\JLY.Hotel.Model.csproj", "{832F99AE-6C8E-494A-A655-34BDED1CA7A4}"
